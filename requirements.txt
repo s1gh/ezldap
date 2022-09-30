@@ -1,0 +1,4 @@
+python-ldap
+rich
+impacket
+simplejson
