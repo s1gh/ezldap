@@ -216,7 +216,7 @@ def parse_arguments():
     optional_args.add_argument(
         '--passwordspray',
         action='store_true',
-        help='Can be used with --users in order to get a formatted list of username'
+        help='Can be used with --users in order to get a formatted list of usernames'
     )
 
     optional_args.add_argument(
