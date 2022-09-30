@@ -101,8 +101,6 @@ class LdapDump:
 
                 if att_val is not None:
                     if k.strip() not in false_positives and att_val.group(0) not in false_positives:
-                        if isinstance(att_val.group(0), list):
-                            print('yes')
                         search_results.append({k:att_val.group(0)})
 
         
