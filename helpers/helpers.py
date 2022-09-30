@@ -82,12 +82,15 @@ def pretty_print(data):
             elif col == 'sAMAccountName' or col == 'name':
                 table.add_column(col, style="green")
             else:
-                table.add_column(col, no_wrap=False)  # #table.add_column("Title", style="magenta")
+                table.add_column(col, no_wrap=False)
 
         for v in data:
             t = []
             for k,v in v.items():
-                t.append(v)
+                if isinstance(v, bytes):
+                    t.append(v.decode('latin-1'))
+                else:
+                    t.append(v)
             table.add_row(*t)
     except KeyError:
         _temp = []

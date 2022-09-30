@@ -84,9 +84,14 @@ class LdapDump:
 
         for list_item in res:
             for k,v in list_item.items():
-                att_key = search_pattern.match(k)
+                att_key = search_pattern.search(k)
 
-                if att_key is not None and k.strip() not in false_positives: search_results.append({k:v})
+                if att_key is not None and k.strip() not in false_positives:
+                    if isinstance(v, list):
+                        for i in v:
+                            search_results.append({k:i})
+                    else:
+                        search_results.append({k:v})
 
                 if isinstance(v, list):
                     for attribute_value in v:
@@ -96,6 +101,8 @@ class LdapDump:
 
                 if att_val is not None:
                     if k.strip() not in false_positives and att_val.group(0) not in false_positives:
+                        if isinstance(att_val.group(0), list):
+                            print('yes')
                         search_results.append({k:att_val.group(0)})
 
         
