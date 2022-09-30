@@ -160,4 +160,4 @@ cython_debug/
 #.idea/
 
 # Ignore data in output
-output/*
+output/**
